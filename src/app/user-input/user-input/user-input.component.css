@@ -1,0 +1,68 @@
+.alter-select {
+    position: relative;
+    top: -17px;
+    width: 30;
+    list-style: none;
+    
+    color: rgb(105, 105, 105);
+    border: 1px solid #ccc;
+    border-top: none;
+    /*so things don't jump around*/
+    overflow-y: auto;
+    background: #fff
+}
+
+  .main-keyword {
+    float: left;
+    width: 30vw;
+  }
+  .alter-keyword {
+    float: left;
+    margin: 0 0 0 2%;
+    width: 30vw;
+  }
+  .search-button {
+    float: left;
+    margin: 2% 0 2% 2%;
+  }
+  .search-result{
+    clear:both;
+  }
+  .alter-keyword-input{
+    margin: 1px 0 0 0;
+  }
+  .alter-keyword-all{
+    font-size: 1em;
+  }
+  .th-termname {
+    width: 30vw;
+  }
+  .th-code {
+    width: 8vw;
+  }
+  .th-select {
+    width: 10vw;
+  }
+  .th-factor-char{
+    width: 25vw;
+  }
+  .item {
+    background-color: #bfe7f9;
+    color: #1494d0;
+    border: 1px solid #fff;
+    height: 70px;
+    line-height: 68px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    cursor: move;
+  }
+  .item.active {
+    background-color: #27aceb;
+    color: #fff;
+    border-color: #27aceb;
+    z-index: 10;
+  }
+  .item:hover{
+    opacity: 0.8;
+  }

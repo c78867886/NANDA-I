@@ -1,0 +1,125 @@
+<!-- <div class='main-keyword'>
+  input:
+  <input size='30%' id='user_input_main' type="text" [(ngModel)]="keyword" (ngModelChange)="getSuggestion()" list="suggestion_list" placeholder="Key term here">
+  <datalist id="suggestion_list"> 
+    <div *ngFor="let sr of suggestionResultJson">
+      <option>{{ sr }}</option> 
+    </div>  
+  </datalist>
+</div> -->
+<div class='alter-keyword'>
+  <div>Defining Char</div>
+  <textarea class='alter-keyword-all' cols="30vw" rows="5vh" [(ngModel)]="keywordDefiningChar"></textarea>
+      
+  <input class='alter-keyword-input' size='40vw' id='user_input_alternative' type="text" [(ngModel)]="keywordDC" (ngModelChange)="getSuggestionDC()" list="suggestion_list1" placeholder="Alter Key term here. ';' for ending.">
+    <datalist id="suggestion_list1">
+      <select *ngFor="let srdc of suggestionResultDC">
+        <option value="{{ srdc }}"></option>
+      </select>
+    </datalist>
+</div>
+<div class='alter-keyword'>
+    <div>Related Factor</div>
+  <textarea class='alter-keyword-all' cols="30vw" rows="5vh" [(ngModel)]="keywordRelatedFactor"></textarea>
+      
+  <input class='alter-keyword-input' size='40vw' id='user_input_alternative' type="text" [(ngModel)]="keywordRelatedF" (ngModelChange)="getSuggestionRelatedF()" list="suggestion_list2" placeholder="Alter Key term here. ';' for ending.">
+    <datalist id="suggestion_list2">
+      <select *ngFor="let srrf of suggestionResultRelatedF">
+        <option value="{{ srrf }}"></option> 
+      </select>
+    </datalist>
+
+</div>
+<div class='alter-keyword'>
+    <div>Risk Factor</div>
+  <textarea class='alter-keyword-all' cols="30vw" rows="5vh" [(ngModel)]="keywordRiskFactor"></textarea>
+      
+  <input class='alter-keyword-input' size='40vw' id='user_input_alternative' type="text" [(ngModel)]="keywordRiskF" (ngModelChange)="getSuggestionRiskF()" list="suggestion_list3" placeholder="Alter Key term here. ';' for ending.">
+    <datalist id="suggestion_list3">
+      <select *ngFor="let srrf2 of suggestionResultRiskF">
+        <option value="{{ srrf2 }}"></option> 
+      </select>
+    </datalist>
+
+</div>
+
+
+<button class='search-button' (click)="queryResult()">search</button>
+
+<div class='search-result'>
+  <span>Search result data: </span>
+  <table border="1px solid black">
+    <tr>
+      <th class='th-termname'>termName</th>
+      <th class='th-code'>code</th>
+      <th class='th-select'>Select to diagnoses</th>
+      <th class='th-select'>Search factors</th>
+    </tr>
+    <tr *ngFor="let result of searchResult">  
+      <td>{{ result['name'] }}</td>
+      <td>{{ result['code'] }}</td>
+      <td>
+          <button (click)="select(result['name'])">Select to diagnoses</button>
+      </td>
+      <td>
+          <button (click)="getFactor(result['name'],result['code'])">Search factors</button>
+      </td>
+    </tr> 
+  </table>
+</div>
+<div>
+  {{ selected | json }}
+  <div class="container-fluid">
+      <kendo-sortable
+          [navigatable]="true"
+          [animation] = "true"
+          [data]="selected"
+          class="row"
+          itemClass="item col-xs-6 col-sm-3"
+          activeItemClass="item col-xs-6 col-sm-3 active"
+      >
+      </kendo-sortable>
+  </div>
+</div>
+
+<div *ngIf="isSeachFactor">
+  <table border="1px solid black">
+      <tr>
+          <th class='th-termname'>termName</th>
+          <th class='th-factor-char'>Defining Char</th>
+          <th class='th-factor-char'>Related Factor</th>
+          <th class='th-factor-char'>Risk Factor</th>
+      </tr>
+      <tr>  
+          <td>{{ searchTermCharResult['name'] }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let dc of searchTermCharResult['defining_char']">
+                  {{ dc }}     
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let rt of searchTermCharResult['related_factor']">
+                  {{ rt }}     
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let rf of searchTermCharResult['risk_factor']">
+                  {{ rf }}     
+              </li>
+            </ul>
+          </td>
+        </tr> 
+  </table>
+  <div>
+      {{ searchTermCharResult | json }}
+  </div>
+
+</div>
+<!-- <div>
+  {{ searchResult | json}}
+</div> -->
