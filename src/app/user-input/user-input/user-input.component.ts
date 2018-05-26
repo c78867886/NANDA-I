@@ -44,7 +44,7 @@ export class UserInputComponent{
   searchResult: string[];
   searchTermCharResult: JSON;
   isSeachFactor = false;
-  selected = [1,2,3];
+  selected = [];
 
 
   constructor(private httpClient: HttpClient) {
